@@ -7,7 +7,7 @@ public class Test
         boolean flag = false;
         Shape[] shapes = new Shape[10];
         Scanner sc = new Scanner(System.in);;
-        System.out.print("press 1 to create a rectangle object, 2 for circle object and 3 to view the text menu: ");
+        System.out.print("Enter 1 to create a rectangle object, 2 for a circle object and 3 to view the text menu: ");
         int input = sc.nextInt();
         while(input!=3)
         {
@@ -20,7 +20,11 @@ public class Test
                 shapes[index] = c;
                 index++;
             }
-            System.out.print("press 1 to enter for rectangle, 2 for circle and 3 to view the text menu: ");
+            else
+            {
+                System.out.println("Invalid Input!!");
+            }
+            System.out.print("Enter 1 to create a rectangle object, 2 for a circle object and 3 to view the text menu: ");
             input = sc.nextInt();
 
         }
@@ -40,38 +44,36 @@ public class Test
         {
             if(choice == 1)
             {
+                System.out.println("Enter the index of the shape object whose origin you want to set: ");
+                int a = sc.nextInt();
                 System.out.println("Enter the x coordinate of the origin point: ");
                 double x = sc.nextDouble();
                 System.out.println("Enter the y coordinate of the origin point: ");
                 double y = sc.nextDouble();
-                for(int i = 0; i < shapes.length;i++)
-                {
-                    if(shapes[i]!=null)
-                    {
-                        shapes[i].setOrigin(x,y);
+                for (Shape shape : shapes) {
+                    if (shape != null) {
+                        shapes[a].setOrigin(x, y);
                     }
                 }
             }
             if(choice == 2)
             {
-                System.out.println("Enter the length of the rectangle: ");
-                double l = sc.nextDouble();
-                System.out.println("Enter the width of the rectangle: ");
-                double b = sc.nextDouble();
-                System.out.println("Enter the radius of the circle: ");
-                double r = sc.nextDouble();
-                for(int i = 0; shapes[i]!= null;i++)
+                System.out.println("Enter the index of the shape object whose dimension you want to specify: ");
+                int z = sc.nextInt();
+                if(shapes[z] instanceof Rectangle && shapes[z]!=null)
                 {
-                    if(shapes[i] instanceof Rectangle)
-                    {
-                        ((Rectangle) shapes[i]).setLength(l);
-                        ((Rectangle) shapes[i]).setWidth(b);
-                    }
-
-                    if(shapes[i] instanceof Circle)
-                    {
-                        ((Circle) shapes[i]).setRadius(r);
-                    }
+                    System.out.println("Enter the length of the rectangle: ");
+                    double l = sc.nextDouble();
+                    System.out.println("Enter the width of the rectangle: ");
+                    double b = sc.nextDouble();
+                    ((Rectangle) shapes[z]).setLength(l);
+                    ((Rectangle) shapes[z]).setWidth(b);
+                }
+                else if (shapes[z] instanceof Circle && shapes[z]!=null)
+                {
+                    System.out.println("Enter the radius of the circle: ");
+                    double r = sc.nextDouble();
+                    ((Circle) shapes[z]).setRadius(r);
                 }
             }
             if(choice == 3)
@@ -146,10 +148,6 @@ public class Test
                         System.out.println("Circumference: " + shapes[i].circumference());
                         System.out.println();
                     }
-                    else if(shapes[i]==null)
-                    {
-
-                    }
                 }
             }
             if(choice == 8)
@@ -158,10 +156,6 @@ public class Test
             }
             System.out.print("Enter your choice for the text menu: ");
             choice = sc.nextInt();
-        }
-        for(int i = 0;i< shapes.length;i++)
-        {
-            System.out.println(shapes[i]);
         }
     }
 }
