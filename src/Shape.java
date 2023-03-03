@@ -1,4 +1,4 @@
-public abstract class Shape {
+public abstract class Shape{
     private Point point;
 
     public Shape()
