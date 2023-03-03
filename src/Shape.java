@@ -23,9 +23,9 @@ public abstract class Shape{
         point.move(delta_x, delta_y);
     }
 
-    public double distance(double x1, double y1)
+    public double distance(double x1, double y1,double x2,double y2)
     {
-        return point.distance(x1, y1);
+        return Point.distance(x1, y1,x2,y2);
     }
     public abstract double area();
     public abstract double circumference();
