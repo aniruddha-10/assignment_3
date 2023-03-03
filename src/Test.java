@@ -3,31 +3,31 @@ public class Test
 {
     public static void main(String[] args)
     {
-        int index = 0;
-        boolean flag = false;
-        Shape[] shapes = new Shape[10];
+        int index = 0;                                                                                                      // to keep track of the index of the array
+        Shape[] shapes = new Shape[10];             // array to store the object references
         Scanner sc = new Scanner(System.in);;
         System.out.print("Enter 1 to create a rectangle object, 2 for a circle object and 3 to view the text menu: ");
-        int input = sc.nextInt();
+        int input = sc.nextInt();    // takes the input option from the user to form rectangle or circle objects
         while(input!=3)
         {
             if (input == 1) {
-                Rectangle r = new Rectangle();
+                Rectangle r = new Rectangle();      // creates an object of the rectangle class
                 shapes[index] = r;
                 index++;
             } else if (input == 2) {
-                Circle c = new Circle();
+                Circle c = new Circle();            // creates an object of the circle class
                 shapes[index] = c;
                 index++;
             }
             else
             {
-                System.out.println("Invalid Input!!");
+                System.out.println("Invalid Input!!");  // if there's an invalid input
             }
             System.out.print("Enter 1 to create a rectangle object, 2 for a circle object and 3 to view the text menu: ");
             input = sc.nextInt();
-
         }
+
+        // Text Menu for the user to choose
         System.out.println("-:WELCOME TO THE TEXT MENU:- ");
         System.out.println("Enter your choice for the following options:");
         System.out.println("1. To set the origin point of the shape ");
@@ -42,6 +42,7 @@ public class Test
         int choice = sc.nextInt();
         while(choice<9)
         {
+            // To set the origin for the shapes
             if(choice == 1)
             {
                 System.out.println("Enter the index of the shape object whose origin you want to set: ");
@@ -56,6 +57,7 @@ public class Test
                     }
                 }
             }
+            // To specify the dimensions of the shapes in the array
             if(choice == 2)
             {
                 System.out.println("Enter the index of the shape object whose dimension you want to specify: ");
@@ -76,6 +78,7 @@ public class Test
                     ((Circle) shapes[z]).setRadius(r);
                 }
             }
+            // To see the current state of any object as per the user's choice
             if(choice == 3)
             {
                 System.out.println("Enter the index of the object of which you want to see the state: ");
@@ -96,6 +99,7 @@ public class Test
                     System.out.println("Circumference: " + shapes[ind].circumference());
                 }
             }
+            // To move the origin's coordinate points as per the user specified values
             if(choice == 4)
             {
                 System.out.println("Enter the index of the object of which you want to move the points");
@@ -107,6 +111,7 @@ public class Test
                     double delta_y = sc.nextDouble();
                     shapes[a].move(delta_x,delta_y);
             }
+            // To compute the distance between any two point objects
             if(choice == 5)
             {
                 System.out.println("Enter the index of the first shape object: ");
@@ -121,16 +126,19 @@ public class Test
                 double y2 = shapes[i2].getOrigin().getY();
                 System.out.println("The Distance between the origin points of the shape objects: " +Point.distance(x1,y1,x2,y2));
             }
+            // To remove any object reference from the array
             if (choice == 6)
             {
                 System.out.println("Enter the index number for the object you would want to destroy/remove: ");
                 int index1 = sc.nextInt();
                 shapes[index1]=null;
             }
+            // This choice will display the current state for all the objects in the array
             if (choice == 7)
             {
                 for(int i=0;i< shapes.length;i++)
                 {
+                    // checks if the object reference is an instance of the Rectangle class
                     if(shapes[i] instanceof Rectangle)
                     {
                         System.out.println("Origin: " + "(" + shapes[i].getOrigin().getX() +  "," + shapes[i].getOrigin().getY() + ")" );
@@ -140,6 +148,7 @@ public class Test
                         System.out.println("Circumference: " + shapes[i].circumference());
                         System.out.println();
                     }
+                    // checks if the object reference is an instance of the circle class
                     else if (shapes[i] instanceof Circle)
                     {
                         System.out.println("Origin: " + "(" + shapes[i].getOrigin().getX() +  "," + shapes[i].getOrigin().getY() + ")" );
@@ -150,6 +159,7 @@ public class Test
                     }
                 }
             }
+            // if the user wants to quit the program
             if(choice == 8)
             {
                 break;
